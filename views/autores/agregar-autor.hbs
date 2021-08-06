@@ -1,0 +1,20 @@
+<div class="row m-5">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header bg-primary c-w">Formulario</div>
+            <div class="card-body">
+                <form action={{#if editMode}}"/editar-autor"{{else}}"/agregar-autor"{{/if}} method="POST">
+                    <label class="form-label" for="nombre">Nombre</label>
+                    <input class="form-control" type="text" name="nombre" id="nombre" value="{{#if editMode}}{{autor.nombre}}{{/if}}">
+                    <label class="form-label" for="correo">Correo</label>
+                    <input class="form-control" type="email" name="correo" id="correo" value="{{#if editMode}}{{autor.correo}}{{/if}}">
+                     {{#if editMode}}<input type="hidden" name="id" value="{{id}}">{{/if}}
+                    <button class="btn btn-primary mt-3" type="submit">{{#if editMode}}Actualizar{{else}}Agregar{{/if}}</button>
+                   
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3"></div>
+</div>

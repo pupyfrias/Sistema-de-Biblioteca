@@ -1,0 +1,50 @@
+.min-box {
+    height: 350px;
+    margin: 5px;
+    align-items: center;
+}
+
+.img-fluid {
+    margin-right: 10px;
+    max-width: 95% !important;
+}
+
+.add{
+    position: fixed;
+    right: 15px;
+    bottom: 15px;
+}
+
+.c-w{
+    color: white;
+}
+
+.display-ib{
+
+    display: inline-block !important;
+    margin: 4px;
+}
+
+.fl{
+    float: left;
+}
+
+.ml{
+    margin-left: 10px;
+}
+
+.df{
+    display: flex;
+}
+
+.img-fluid {
+    width: 300px !important;
+}
+
+.w-24 {
+    width: 19%!important;
+}
+
+.db{
+    display: block;
+}

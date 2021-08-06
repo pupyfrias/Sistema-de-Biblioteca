@@ -1,0 +1,36 @@
+<main class="m-4">
+
+    {{#if hasLibros}}
+    <h2>Libros</h2>
+    {{#each libros}}
+    <div class="card w-24 display-ib">
+        <div class="card-body">
+            <p class="card-title">
+                <b>Id: </b> <span>{{this.id}}</span><br>
+                <b>Título: </b> <span id="nombre">{{this.nombre}}</span><br>
+                <b>Año: </b> <span id="año">{{this.año}}</span><br>
+                <b>Autor: </b> <span id="autor">{{this.autore.dataValues.nombre}}</span><br>
+                <b>Editorial: </b> <span id="editorial">{{this.editorial.dataValues.nombre}}</span><br>
+                <b>País: </b> <span>{{this.editorial.dataValues.pais}}</span>
+
+            </p>
+
+            <div class="df mt-1">
+                <a href="/editar-libro/{{this.id}}?edit=true" class="btn btn-primary fl">Editar</a>
+                <form action="/eliminar-libro" method="post">
+                    <input type="hidden" value="{{this.id}}" name="id">
+                    <button type="submit" data-nombre="{{this.nombre}}"
+                        class="btn btn-primary fl ml eliminar">Eliminar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    {{/each }}
+    {{else}}
+    <h2 class="m-4">No hay Libros</h2>
+    {{/if}}
+
+    <div class="add">
+        <a href="/agregar-libro"><img width="70px" src="../../assets/images/add.png" alt=""></a>
+    </div>
+</main>

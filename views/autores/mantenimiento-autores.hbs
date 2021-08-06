@@ -1,0 +1,30 @@
+<main class="m-4">
+
+  {{#if hasAutores}}
+  <h2>Autores</h2>
+  {{#each autores}}
+  <div class="card w-24 display-ib">
+    <div class="card-body">
+      <p class="card-title">
+        <b>Nombre: </b> <span id="nombre">{{this.nombre}}</span><br>
+        <b>Correo: </b> <span id="correo">{{this.correo}}</span><br>
+      </p>
+
+      <div class="df">
+        <a href="/editar-autor/{{this.id}}?edit=true" class="btn btn-primary fl">Editar</a>
+        <form action="/eliminar-autor" method="post">
+          <input type="hidden" value="{{this.id}}" name="id">
+          <button type="submit" data-nombre="{{this.nombre}}" class="btn btn-primary fl ml eliminar">Eliminar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  {{/each }}
+  {{else}}
+  <h2>No hay Autores</h2>
+  {{/if}}
+
+  <div class="add">
+    <a href="/agregar-autor"><img width="70px" src="../../assets/images/add.png" alt=""></a>
+  </div>
+</main>

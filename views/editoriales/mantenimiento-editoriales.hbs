@@ -1,0 +1,32 @@
+<main class="m-4">
+
+    {{#if hasEditoriales}}
+    <h2>Editoriales</h2>
+    {{#each editoriales}}
+    <div class="card w-24 display-ib">
+        <div class="card-body">
+           
+            <p class="card-title">
+                <b>Nombre: </b> <span id="nombre">{{this.nombre}}</span><br>
+                <b>Teléfono: </b> <span id="telefono">{{this.telefono}}</span><br>
+                <b>País: </b> <span id="pais">{{this.pais}}</span><br>
+            </p>
+
+            <div class="df mt-2">
+                <a href="/editar-editorial/{{this.id}}?edit=true" class="btn btn-primary fl">Editar</a>
+                <form action="/eliminar-editorial" method="post" id="form-eliminar">
+                    <input type="hidden" value="{{this.id}}" name="id">
+                    <button type="submit"  data-nombre="{{this.nombre}}" class="btn btn-primary fl ml eliminar">Eliminar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    {{/each }}
+{{else}}
+<h2>No hay Editoriales</h2>
+{{/if}}
+
+    <div class="add">
+        <a href="/agregar-editorial"><img width="70px" src="../../assets/images/add.png" alt=""></a>
+    </div>
+</main>

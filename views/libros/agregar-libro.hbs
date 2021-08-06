@@ -1,0 +1,53 @@
+{{#if notAutores}}
+<h2 class="m-4">No hay Autores</h2>
+{{else}}
+{{#if notEditoriales}}
+<h2  class="m-4">No hay Editoriales</h2>
+{{else}}
+<div class="row m-5">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header bg-primary c-w">Formulario</div>
+            <div class="card-body">
+                <form action="{{#if editMode}}/editar-libro {{else}}/agregar-libro{{/if}}" method="post">
+                    <label class="form-label" for="nombre">Nombre</label>
+                    <input class="form-control" type="text" name="nombre" id="nombre" value="{{libro.nombre}}">
+                    <label class="form-label" for="año">Año de Publicación</label>
+                    <input class="form-control" type="tel" name="año" id="año" value="{{libro.año}}">
+                    <label class="form-label" for="autores">Autores</label>
+
+                    <select class="form-select" aria-label="Default select example" name="idAutor" id="autores">
+                        <option selected>Seleccione un Autor</option>
+                        {{#each autores}}
+                        <option value="{{this.id}}" {{#if (comparar this.id ../libro.autoreId)}}selected{{/if}}>
+                            {{this.nombre}}</option>
+                        {{/each}}
+
+                    </select>
+                    <label class="form-label" for="editorial">Editorial</label>
+                    <select class="form-select" aria-label="Default select example" name="idEditorial" id="editorial">
+                        <option {{#if editMode}}{{else}}selected{{/if}}>Seleccione un Editor</option>
+                        
+                        {{#each editoriales}}
+                            {{#if (comparar this.id ../libro.editorialId)}}
+                            <option value="{{this.id}}" selected>{{this.nombre}}</option>
+                            {{else}}
+                            <option value="{{this.id}}">{{this.nombre}}</option>
+                            {{/if}}
+                        {{/each}}
+
+                    </select>
+
+                    <input type="hidden" value="{{libro.id}}" name="id">
+                    <button class="btn btn-primary mt-3" type="submit">{{#if
+                        editMode}}Actualizar{{else}}Agregar{{/if}}</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3"></div>
+</div>
+
+{{/if}}
+{{/if}}
